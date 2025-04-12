@@ -15,7 +15,7 @@ pub async fn handler() -> impl IntoResponse {
                 color: #eee;
                 font-family: sans-serif;
                 margin: 0;
-                padding: 2rem;
+                padding: 0;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -24,6 +24,8 @@ pub async fn handler() -> impl IntoResponse {
             audio {
                 display: block;
                 margin: 1rem auto 0;
+                width: 100%;
+                box-sizing: border-box;
             }
             a {
                 color: #66f;
@@ -53,17 +55,29 @@ pub async fn handler() -> impl IntoResponse {
                 text-align: center;
             }
 
+            #resultWrapper {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 1.5rem;
+                width: 100%;
+                max-width: 500px;
+            }
+
             .link-box {
+                width: 100%;
                 background: #222;
                 padding: 0.5rem;
                 border-radius: 5px;
                 font-family: monospace;
                 word-break: break-word;
                 overflow-wrap: break-word;
-                margin: 0 auto 1rem;
-                max-width: 100%;
                 border: 1px solid #444;
                 cursor: pointer;
+                box-sizing: border-box;
             }
             .link-box .base {
                 color: #888;
@@ -100,12 +114,12 @@ pub async fn handler() -> impl IntoResponse {
                 </button>
             </div>
 
-            <div id="resultWrapper" style="display:none; flex-direction: column; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem;">
+            <div id="resultWrapper">
                 <code onclick="copyResult()" id="result" class="link-box" title="Click to copy"></code>
-                <audio id="player" controls style="display:none; width: 100%; max-width: 500px;" autoplay></audio>
+                <audio id="player" controls autoplay></audio>
             </div>
 
-            <p style="margin-top: 2rem;"><a href="https://github.com/caffeine-addictt/audiopatch" target="_blank">View on GitHub</a></p>
+            <p style="position: absolute; bottom: 0; margin-bottom: 1rem; left: 50%; transform: translateX(-50%);"><a href="https://github.com/caffeine-addictt/audiopatch" target="_blank">View on GitHub</a></p>
             <span id="copiedMessage" style="display:none; position: absolute; right: 0; bottom: 0; margin: 0.5rem; padding: 0.25rem 0.5rem; background-color: #0f0; color: #000; border-radius: 4px; font-size: 0.9rem;">Copied!</span>
         </div>
 
