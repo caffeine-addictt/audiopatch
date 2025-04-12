@@ -4,8 +4,8 @@ WORKDIR /app
 # musl
 RUN apt-get update \
   && apt-get install --no-install-recommends -y musl-tools \
-  && rm -rf /var/lib/apt/lists/* \
-  && rustup target add x86_64-unknown-linux-musl
+  && rustup target add x86_64-unknown-linux-musl \
+  && rustup component add rust-std --target x86_64-unknown-linux-musl
 
 # caching
 COPY Cargo.toml Cargo.lock ./
