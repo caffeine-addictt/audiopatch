@@ -1,0 +1,10 @@
+# This file is for the labeler workflow
+# Documentation https://github.com/marketplace/actions/labeler
+
+test:
+  - changed-files:
+      - any-glob-to-any-file: [tests/**, src/tests/**, ./*test*]
+
+ci:
+  - changed-files:
+      - any-glob-to-any-file: [.github/workflows/**]
