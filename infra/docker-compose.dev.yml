@@ -1,0 +1,7 @@
+services:
+  audiopatch:
+    build: ..
+    develop:
+      watch:
+        - path: ../src
+          action: rebuild

@@ -1,0 +1,7 @@
+services:
+  audiopatch:
+    container_name: audiopatch
+    image: ghcr.io/caffeine-addictt/audiopatch:latest
+    pull_policy: always
+    ports:
+      - 3000:3000
