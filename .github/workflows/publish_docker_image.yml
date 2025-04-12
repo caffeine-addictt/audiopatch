@@ -38,9 +38,9 @@ jobs:
             type=schedule
             type=schedule,pattern={{date 'YYYYMMDD'}}
 
-            type=sha,enabled={{is_default_branch}}
-            type=sha,format=long,enabled={{is_default_branch}}
-            type=edge,branch=main,enabled={{is_default_branch}}
+            type=sha,enable={{is_default_branch}}
+            type=sha,format=long,enable={{is_default_branch}}
+            type=edge,branch=main,enable={{is_default_branch}}
 
             type=semver,pattern=v{{version}}
             type=semver,pattern=v{{major}}.{{minor}}
