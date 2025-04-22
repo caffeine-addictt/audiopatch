@@ -5,10 +5,10 @@ WORKDIR /app
 RUN rustup target add x86_64-unknown-linux-musl
 COPY Cargo.toml Cargo.lock ./
 RUN mkdir src && echo "fn main() {}" > src/main.rs \
-  && cargo build --release --target x86_64-unknown-linux-musl && rm -r src
+  && cargo build --release --target x86_64-unknown-linux-musl && rm -rf src
 
 COPY . .
-RUN cargo build --release --target x86_64-unknown-linux-musl
+RUN touch src/main.rs && cargo build --release --target x86_64-unknown-linux-musl
 
 
 FROM alpine:3.21.3
