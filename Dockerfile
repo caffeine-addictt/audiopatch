@@ -1,16 +1,11 @@
-FROM rust:1.86.0 AS builder
+FROM clux/muslrust:stable AS builder
 WORKDIR /app
 
-# musl
-RUN apt-get update \
-  && apt-get install --no-install-recommends -y musl-tools \
-  && rustup target add x86_64-unknown-linux-musl \
-  && rustup component add rust-std --target x86_64-unknown-linux-musl
-
 # caching
+RUN rustup target add x86_64-unknown-linux-musl
 COPY Cargo.toml Cargo.lock ./
 RUN mkdir src && echo "fn main() {}" > src/main.rs \
-  && cargo fetch && rm -r src
+  && cargo build --release --target x86_64-unknown-linux-musl && rm -r src
 
 COPY . .
 RUN cargo build --release --target x86_64-unknown-linux-musl
