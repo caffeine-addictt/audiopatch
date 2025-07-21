@@ -11,7 +11,7 @@ COPY . .
 RUN touch src/main.rs && cargo build --release --target x86_64-unknown-linux-musl
 
 
-FROM alpine:3.21.3
+FROM alpine:3.22.1
 ARG APP_DIR=/usr/src/app
 ARG APP_USER=appuser
 LABEL author=caffeine-addictt
